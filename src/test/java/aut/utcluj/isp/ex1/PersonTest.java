@@ -1,5 +1,6 @@
 package aut.utcluj.isp.ex1;
 
+import org.example.ex1.Person;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

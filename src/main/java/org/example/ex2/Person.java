@@ -1,19 +1,17 @@
 package org.example.ex2;
 
-/**
- * @author stefan
- */
-public class Person {
+public abstract class Person {
     private String firstName;
     private String lastName;
 
     public Person(String firstName) {
+        this.firstName = firstName;
         this.lastName = "";
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public Person(String firstName, String lastName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -23,4 +21,6 @@ public class Person {
     public String getLastName() {
         return lastName;
     }
+
+    public abstract String showEmployeeInfo();
 }

@@ -1,5 +1,7 @@
 package aut.utcluj.isp.ex3;
 
+import org.example.ex2.Employee;
+import org.example.ex3.EmployeeController;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,7 +17,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void testAddEmployee() {
-        final Employee employee = new Employee("Harvey", "Specter", 2000d, "1861216244480");
+        final org.example.ex3.Employee employee = new Employee("Harvey", "Specter", 2000d, "1861216244480");
         final EmployeeController employeeController = new EmployeeController();
         employeeController.addEmployee(employee);
 

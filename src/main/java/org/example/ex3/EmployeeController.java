@@ -1,66 +1,49 @@
 package org.example.ex3;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author stefan
- */
 public class EmployeeController {
-    /**
-     * Add new employee to the list of employees
-     *
-     * @param employee - employee information
-     */
+    private List<Employee> employees;
+
+    public EmployeeController() {
+        this.employees = new ArrayList<>();
+    }
+
     public void addEmployee(final Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        employees.add(employee);
     }
 
-    /**
-     * Get employee by cnp
-     *
-     * @param cnp - unique cnp
-     * @return found employee or null if not found
-     */
     public Employee getEmployeeByCnp(final String cnp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return employees.stream()
+                .filter(employee -> employee.getCnp().equals(cnp))
+                .findFirst()
+                .orElse(null);
     }
 
-    /**
-     * Update employee salary by cnp
-     *
-     * @param cnp    - unique cnp
-     * @param salary - salary
-     * @return updated employee
-     */
     public Employee updateEmployeeSalaryByCnp(final String cnp, final Double salary) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Employee employee = getEmployeeByCnp(cnp);
+        if (employee != null) {
+            employee = new Employee(employee.getFirstName(), employee.getLastName(), salary, employee.getCnp());
+            employees.removeIf(e -> e.getCnp().equals(cnp));
+            employees.add(employee);
+        }
+        return employee;
     }
 
-    /**
-     * Delete employee by cnp
-     *
-     * @param cnp - unique cnp
-     * @return deleted employee or null if not found
-     */
     public Employee deleteEmployeeByCnp(final String cnp) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Employee employee = getEmployeeByCnp(cnp);
+        if (employee != null) {
+            employees.remove(employee);
+        }
+        return employee;
     }
 
-    /**
-     * Return current list of employees
-     *
-     * @return current list of employees
-     */
     public List<Employee> getEmployees() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new ArrayList<>(employees);
     }
 
-    /**
-     * Get number of employees
-     *
-     * @return - number of registered employees
-     */
     public int getNumberOfEmployees() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return employees.size();
     }
 }
